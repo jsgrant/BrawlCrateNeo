@@ -1,0 +1,14 @@
+C:\git\BrawlCrateNeo\BrawlCrate\BrawlCrate.Core\bin\Debug\netcoreapp3.1\BrawlCrate.Core.deps.json
+C:\git\BrawlCrateNeo\BrawlCrate\BrawlCrate.Core\bin\Debug\netcoreapp3.1\BrawlCrate.Core.dll
+C:\git\BrawlCrateNeo\BrawlCrate\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.csprojAssemblyReference.cache
+C:\git\BrawlCrateNeo\BrawlCrate\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.AssemblyInfoInputs.cache
+C:\git\BrawlCrateNeo\BrawlCrate\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.AssemblyInfo.cs
+C:\git\BrawlCrateNeo\BrawlCrate.Core\bin\Debug\netcoreapp3.1\BrawlCrate.Core.deps.json
+C:\git\BrawlCrateNeo\BrawlCrate.Core\bin\Debug\netcoreapp3.1\BrawlCrate.Core.dll
+C:\git\BrawlCrateNeo\BrawlCrate.Core\bin\Debug\netcoreapp3.1\BrawlCrate.Core.pdb
+C:\git\BrawlCrateNeo\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.csprojAssemblyReference.cache
+C:\git\BrawlCrateNeo\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.AssemblyInfoInputs.cache
+C:\git\BrawlCrateNeo\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.AssemblyInfo.cs
+C:\git\BrawlCrateNeo\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.csproj.CoreCompileInputs.cache
+C:\git\BrawlCrateNeo\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.dll
+C:\git\BrawlCrateNeo\BrawlCrate.Core\obj\Debug\netcoreapp3.1\BrawlCrate.Core.pdb
