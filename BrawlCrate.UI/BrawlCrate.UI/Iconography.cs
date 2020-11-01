@@ -7,6 +7,11 @@ namespace BrawlCrate.UI
 {
     public static class Iconography
     {
-        public readonly static Icon Icon = Icon.FromResource("BrawlCrate.UI.Resources.BrawlCrate.ico");
+        public readonly static Icon MainIcon =
+#if CANARY
+            Icon.FromResource("BrawlCrate.UI.Resources.BrawlCrateCanary.ico");
+#else
+            Icon.FromResource("BrawlCrate.UI.Resources.BrawlCrate.ico");
+#endif
     }
 }

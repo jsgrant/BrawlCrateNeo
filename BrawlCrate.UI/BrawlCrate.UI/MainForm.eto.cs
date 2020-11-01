@@ -16,7 +16,7 @@ namespace BrawlCrate.UI
         internal StackLayoutItem test;
         void InitializeComponent()
         {
-            Icon = Iconography.Icon;
+            Icon = Iconography.MainIcon;
             Title = "BrawlCrate Neo";
             ClientSize = new Size(400, 350);
             Padding = 10;
