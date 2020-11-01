@@ -1,17 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Configurations>Debug;Release</Configurations>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Nodes\" />
-    <Folder Include="Structures\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="OpenTK" Version="4.0.6" />
+    <ProjectReference Include="..\BrawlCrate.Iconography\BrawlCrate.Iconography.csproj" />
   </ItemGroup>
 
 </Project>

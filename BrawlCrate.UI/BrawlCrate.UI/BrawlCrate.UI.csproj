@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Eto.Forms" Version="2.5.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\BrawlCrate.Core\BrawlCrate.Core.csproj" />
+    <ProjectReference Include="..\..\BrawlCrate.Iconography\BrawlCrate.Iconography.csproj" />
+  </ItemGroup>
+  
+</Project>
