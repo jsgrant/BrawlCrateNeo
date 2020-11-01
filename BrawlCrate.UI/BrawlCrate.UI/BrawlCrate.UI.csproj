@@ -2,7 +2,25 @@
 	
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <ApplicationIcon>Resources\BrawlCrate.ico</ApplicationIcon>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
+	
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|netstandard2.0|AnyCPU'">
+    <DefineConstants>TRACE;CANARY</DefineConstants>
+  </PropertyGroup>
+	
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <None Remove="Resources\BrawlCrate.ico" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BrawlCrate.ico" />
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Eto.Forms" Version="2.5.0" />
@@ -10,7 +28,6 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\BrawlCrate.Core\BrawlCrate.Core.csproj" />
-    <ProjectReference Include="..\..\BrawlCrate.Iconography\BrawlCrate.Iconography.csproj" />
   </ItemGroup>
   
 </Project>

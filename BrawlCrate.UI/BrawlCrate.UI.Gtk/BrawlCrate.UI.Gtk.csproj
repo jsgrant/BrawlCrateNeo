@@ -10,6 +10,10 @@
     <ExternalConsole>false</ExternalConsole>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\BrawlCrate.UI\BrawlCrate.UI.csproj" />
   </ItemGroup>

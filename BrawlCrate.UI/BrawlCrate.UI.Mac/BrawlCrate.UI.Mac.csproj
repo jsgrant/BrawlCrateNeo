@@ -7,6 +7,10 @@
     <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
   </PropertyGroup>
 	
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\BrawlCrate.UI\BrawlCrate.UI.csproj" />
   </ItemGroup>

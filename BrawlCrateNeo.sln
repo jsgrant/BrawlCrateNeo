@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlCrate.UI.Mac", "BrawlC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlCrate.UI.Wpf", "BrawlCrate.UI\BrawlCrate.UI.Wpf\BrawlCrate.UI.Wpf.csproj", "{8A44FA0C-CDF8-4AEE-B943-6A1B4644017A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrawlCrate.Core", "BrawlCrate.Core\BrawlCrate.Core.csproj", "{191BF7AE-8BD6-427C-823C-CC61DB77DD02}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrawlCrate.Iconography", "BrawlCrate.Iconography\BrawlCrate.Iconography.csproj", "{7F7C01F9-4034-4EF2-B7FE-64B45D111F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlCrate.Core", "BrawlCrate.Core\BrawlCrate.Core.csproj", "{191BF7AE-8BD6-427C-823C-CC61DB77DD02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,8 +20,8 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5284CBC3-6CD5-4AEE-ADB0-10892AE64B9D}.Canary|Any CPU.ActiveCfg = Release|Any CPU
-		{5284CBC3-6CD5-4AEE-ADB0-10892AE64B9D}.Canary|Any CPU.Build.0 = Release|Any CPU
+		{5284CBC3-6CD5-4AEE-ADB0-10892AE64B9D}.Canary|Any CPU.ActiveCfg = Canary|Any CPU
+		{5284CBC3-6CD5-4AEE-ADB0-10892AE64B9D}.Canary|Any CPU.Build.0 = Canary|Any CPU
 		{5284CBC3-6CD5-4AEE-ADB0-10892AE64B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5284CBC3-6CD5-4AEE-ADB0-10892AE64B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5284CBC3-6CD5-4AEE-ADB0-10892AE64B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,12 +50,6 @@ Global
 		{191BF7AE-8BD6-427C-823C-CC61DB77DD02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{191BF7AE-8BD6-427C-823C-CC61DB77DD02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{191BF7AE-8BD6-427C-823C-CC61DB77DD02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F7C01F9-4034-4EF2-B7FE-64B45D111F76}.Canary|Any CPU.ActiveCfg = Release|Any CPU
-		{7F7C01F9-4034-4EF2-B7FE-64B45D111F76}.Canary|Any CPU.Build.0 = Release|Any CPU
-		{7F7C01F9-4034-4EF2-B7FE-64B45D111F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F7C01F9-4034-4EF2-B7FE-64B45D111F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F7C01F9-4034-4EF2-B7FE-64B45D111F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F7C01F9-4034-4EF2-B7FE-64B45D111F76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,8 @@
 using System;
+using System.Collections;
+using System.IO;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using Eto.Forms;
 using Eto.Drawing;
 
@@ -6,9 +10,14 @@ namespace BrawlCrate.UI
 {
     partial class MainForm : Form
     {
+        public static readonly OpenFileDialog OpenFileDialog = new OpenFileDialog();
+        public static readonly OpenFileDialog OpenFilesDialog = new OpenFileDialog { Title = "Open Files", MultiSelect = true };
+
+        internal StackLayoutItem test;
         void InitializeComponent()
         {
-            Title = "My Eto Form";
+            Icon = Iconography.Icon;
+            Title = "BrawlCrate Neo";
             ClientSize = new Size(400, 350);
             Padding = 10;
 
@@ -22,6 +31,9 @@ namespace BrawlCrate.UI
             };
 
             // create a few commands that can be used for the menu and toolbar
+            var openFile = new Command {MenuText = "&Open", ToolBarText = "Open a file"};
+            openFile.Executed += OpenFile;
+
             var clickMe = new Command { MenuText = "Click Me!", ToolBarText = "Click Me!" };
             clickMe.Executed += (sender, e) => MessageBox.Show(this, "I was clicked!");
 
@@ -37,9 +49,9 @@ namespace BrawlCrate.UI
                 Items =
                 {
 					// File submenu
-					new ButtonMenuItem { Text = "&File", Items = { clickMe } },
-					// new ButtonMenuItem { Text = "&Edit", Items = { /* commands/items */ } },
-					// new ButtonMenuItem { Text = "&View", Items = { /* commands/items */ } },
+					new ButtonMenuItem { Text = "&File", Items = { openFile } },
+					new ButtonMenuItem { Text = "&Edit", Items = { /* commands/items */ } },
+					new ButtonMenuItem { Text = "&View", Items = { /* commands/items */ } },
 				},
                 ApplicationItems =
                 {
@@ -52,6 +64,14 @@ namespace BrawlCrate.UI
 
             // create toolbar			
             ToolBar = new ToolBar { Items = { clickMe } };
+        }
+
+        public void OpenFile(object sender, EventArgs e)
+        {
+            if (OpenFileDialog.ShowDialog(this) == DialogResult.Ok)
+            {
+                (Content as StackLayout).Items[0] = OpenFileDialog.FileName;
+            }
         }
     }
 }
