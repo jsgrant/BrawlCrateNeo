@@ -1,8 +1,4 @@
 using System;
-using System.Collections;
-using System.IO;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using Eto.Forms;
 using Eto.Drawing;
 
@@ -10,10 +6,6 @@ namespace BrawlCrate.UI
 {
     partial class MainForm : Form
     {
-        public static readonly OpenFileDialog OpenFileDialog = new OpenFileDialog();
-        public static readonly OpenFileDialog OpenFilesDialog = new OpenFileDialog { Title = "Open Files", MultiSelect = true };
-
-        internal StackLayoutItem test;
         void InitializeComponent()
         {
             Icon = Iconography.MainIcon;
@@ -68,9 +60,9 @@ namespace BrawlCrate.UI
 
         public void OpenFile(object sender, EventArgs e)
         {
-            if (OpenFileDialog.ShowDialog(this) == DialogResult.Ok)
+            if (FileOpenDialog.ShowDialog(this) == DialogResult.Ok)
             {
-                (Content as StackLayout).Items[0] = OpenFileDialog.FileName;
+                ((StackLayout) Content).Items[0] = FileOpenDialog.FileName;
             }
         }
     }

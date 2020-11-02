@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Eto.Drawing;
+﻿using Eto.Drawing;
 
 namespace BrawlCrate.UI
 {
+    /// <summary>
+    /// Handler for basic Imagery and Iconography used by the program.
+    /// </summary>
     public static class Iconography
     {
+        /// <summary>
+        /// Main Icon used by the program. Different in Canary and Release builds.
+        /// </summary>
         public readonly static Icon MainIcon =
 #if CANARY
             Icon.FromResource("BrawlCrate.UI.Resources.BrawlCrateCanary.ico");
