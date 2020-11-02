@@ -2,6 +2,9 @@
 
 namespace BrawlCrate.Core.Compression
 {
+    /// <summary>
+    /// Implementation of the LZ77 compression algorithm used by Brawl.
+    /// </summary>
     public static class LZ77
     {
         public static byte[] Compress(byte[] uncompressed, bool extended)

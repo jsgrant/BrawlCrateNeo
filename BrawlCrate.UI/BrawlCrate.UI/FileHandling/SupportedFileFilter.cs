@@ -4,7 +4,7 @@ using Eto.Forms;
 namespace BrawlCrate.UI.FileHandling
 {
     /// <summary>
-    /// Extension of <see cref="FileFilter"/> class. Adds additional booleans for sorting/filtering purposes.
+    /// Based on <see cref="FileFilter"/> class. Adds additional booleans for sorting/filtering purposes.
     /// </summary>
     public class SupportedFileFilter : FileFilter
     {
