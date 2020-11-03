@@ -84,7 +84,7 @@ namespace BrawlCrate.UI.FileHandling
             new SupportedFileFilter(true, false, "Text File", ".txt"),
             new SupportedFileFilter(true, false, "Data File", ".dat"),
             new SupportedFileFilter(true, false, "Binary File", ".bin"),
-            new SupportedFileFilter(true, false, "Binary Backup File", ".bak"),
+            new SupportedFileFilter(true, false, "Binary Backup File", ".bak")
         };
 
         /// <summary>

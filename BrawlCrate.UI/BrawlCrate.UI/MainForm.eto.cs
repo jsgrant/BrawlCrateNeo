@@ -16,8 +16,8 @@ namespace BrawlCrate.UI
             {
                 Items =
                 {
-                    "Welcome to BrawlCrate Neo! Actual features coming soon™",
-					// add more controls here
+                    "Welcome to BrawlCrate Neo! Actual features coming soon™"
+                    // add more controls here
 				}
             };
 
@@ -39,12 +39,12 @@ namespace BrawlCrate.UI
 					// File submenu
 					new ButtonMenuItem { Text = "&File", Items = { openFile } },
 					new ButtonMenuItem { Text = "&Edit", Items = { /* commands/items */ } },
-					new ButtonMenuItem { Text = "&View", Items = { /* commands/items */ } },
+					new ButtonMenuItem { Text = "&View", Items = { /* commands/items */ } }
                 },
                 ApplicationItems =
                 {
 					// application (OS X) or file menu (others)
-					new ButtonMenuItem { Text = "&Preferences..." },
+					new ButtonMenuItem { Text = "&Preferences..." }
                 },
                 // Placed in Application Menu for OSX, File Menu for Windows/Linux
                 QuitItem = quitCommand,

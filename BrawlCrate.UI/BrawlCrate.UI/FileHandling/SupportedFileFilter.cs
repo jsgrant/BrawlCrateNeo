@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Eto.Forms;
+﻿using Eto.Forms;
 
 namespace BrawlCrate.UI.FileHandling
 {
