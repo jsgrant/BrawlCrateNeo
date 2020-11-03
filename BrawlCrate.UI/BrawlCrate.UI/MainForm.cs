@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using BrawlCrate.UI.FileHandling;
 using Eto.Forms;
 
@@ -25,6 +27,20 @@ namespace BrawlCrate.UI
         private MainForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Opens the base OpenFileDialog and opens a file if the user selects one.
+        /// </summary>
+        /// <param name="sender">The sending object.</param>
+        /// <param name="e">Event arguments.</param>
+        public void OpenFile(object sender, EventArgs e)
+        {
+            if (FileOpenDialog.ShowDialog(this) == DialogResult.Ok)
+            {
+                Title = $"{Path.GetFileName(FileOpenDialog.FileName)} - {Versioning.ProgramTitle}";
+                ((StackLayout)Content).Items[0] = FileOpenDialog.FileName;
+            }
         }
     }
 }

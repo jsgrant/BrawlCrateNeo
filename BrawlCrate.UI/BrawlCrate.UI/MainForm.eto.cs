@@ -1,4 +1,3 @@
-using System;
 using Eto.Forms;
 using Eto.Drawing;
 
@@ -9,30 +8,27 @@ namespace BrawlCrate.UI
         void InitializeComponent()
         {
             Icon = Iconography.MainIcon;
-            Title = "BrawlCrate Neo";
-            ClientSize = new Size(400, 350);
+            Title = Versioning.ProgramTitle;
+            ClientSize = new Size(680, 420);
             Padding = 10;
 
             Content = new StackLayout
             {
                 Items =
                 {
-                    "Hello World!",
+                    "Welcome to BrawlCrate Neo! Actual features coming soon™",
 					// add more controls here
 				}
             };
 
             // create a few commands that can be used for the menu and toolbar
-            var openFile = new Command {MenuText = "&Open", ToolBarText = "Open a file"};
+            var openFile = new Command {MenuText = "&Open", ToolBarText = "Open a file", Shortcut = Application.Instance.CommonModifier | Keys.O };
             openFile.Executed += OpenFile;
 
-            var clickMe = new Command { MenuText = "Click Me!", ToolBarText = "Click Me!" };
-            clickMe.Executed += (sender, e) => MessageBox.Show(this, "I was clicked!");
-
-            var quitCommand = new Command { MenuText = "Quit", Shortcut = Application.Instance.CommonModifier | Keys.Q };
+            var quitCommand = new Command { MenuText = "Quit", ToolBarText = "Quit the program" };
             quitCommand.Executed += (sender, e) => Application.Instance.Quit();
 
-            var aboutCommand = new Command { MenuText = "About..." };
+            var aboutCommand = new Command { MenuText = "About...", ToolBarText = "Learn more about the program" };
             aboutCommand.Executed += (sender, e) => new AboutDialog().ShowDialog(this);
 
             // create menu
@@ -44,26 +40,17 @@ namespace BrawlCrate.UI
 					new ButtonMenuItem { Text = "&File", Items = { openFile } },
 					new ButtonMenuItem { Text = "&Edit", Items = { /* commands/items */ } },
 					new ButtonMenuItem { Text = "&View", Items = { /* commands/items */ } },
-				},
+                },
                 ApplicationItems =
                 {
 					// application (OS X) or file menu (others)
 					new ButtonMenuItem { Text = "&Preferences..." },
                 },
+                // Placed in Application Menu for OSX, File Menu for Windows/Linux
                 QuitItem = quitCommand,
+                // Placed in Application Menu for OSX, Help Menu for Windows/Linux
                 AboutItem = aboutCommand
             };
-
-            // create toolbar			
-            ToolBar = new ToolBar { Items = { clickMe } };
-        }
-
-        public void OpenFile(object sender, EventArgs e)
-        {
-            if (FileOpenDialog.ShowDialog(this) == DialogResult.Ok)
-            {
-                ((StackLayout) Content).Items[0] = FileOpenDialog.FileName;
-            }
         }
     }
 }
