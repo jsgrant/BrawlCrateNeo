@@ -16,8 +16,75 @@ namespace BrawlCrate.UI.FileHandling
         /// </summary>
         public static readonly SupportedFileFilter[] SupportedFiles =
         {
+            // Archive Files
             new SupportedFileFilter("PAC File Archive", ".pac"),
-            new SupportedFileFilter("PCS Compressed File Archive", ".pcs")
+            new SupportedFileFilter("PCS Compressed File Archive", ".pcs"),
+            new SupportedFileFilter(false, "Archive Pair (*.pac & *.pcs)", ".pair"),
+
+            // NW4R Containers
+            new SupportedFileFilter("NW4R Resource Pack", ".brres"),
+
+            // NW4R Raw Files
+            new SupportedFileFilter("NW4R Model", ".mdl0"),
+            new SupportedFileFilter("NW4R Texture", ".tex0"),
+            new SupportedFileFilter("NW4R Palette", ".plt0"),
+            new SupportedFileFilter("NW4R Bone Animation", ".chr0"),
+            new SupportedFileFilter("NW4R Texture Animation", ".srt0"),
+            new SupportedFileFilter("NW4R Vertex Morph", ".shp0"),
+            new SupportedFileFilter("NW4R Visibility Sequence", ".vis0"),
+            new SupportedFileFilter("NW4R Texture Pattern", ".pat0"),
+            new SupportedFileFilter("NW4R Color Sequence", ".clr0"),
+            new SupportedFileFilter("NW4R Scene Settings", ".scn0"),
+
+            // NW4R Audio
+            new SupportedFileFilter("NW4R Audio Stream", ".brstm"),
+            new SupportedFileFilter("NW4R Sound Archive", ".brsar"),
+            new SupportedFileFilter("NW4R RSAR Sound File", ".brwsd"),
+            new SupportedFileFilter("NW4R RSAR Sound Bank File", ".brbnk"),
+            new SupportedFileFilter("NW4R RSAR Sound Sequence", ".brseq"),
+
+            // NW4R Effects
+            new SupportedFileFilter("Particle Effect List", ".efls"),
+            new SupportedFileFilter("NW4R Particle Effects", ".breff"),
+            new SupportedFileFilter("NW4R Particle Textures", ".breft"),
+            
+            // Modules
+            new SupportedFileFilter("Static Module", ".dol"),
+            new SupportedFileFilter("Relocatable Module", ".rel"),
+
+            // Text
+            new SupportedFileFilter("Brawl Message Pack", ".msbin"),
+
+            // Stage Files
+            new SupportedFileFilter("Brawl Collision File", ".coll"),
+            new SupportedFileFilter("Brawl Stage Parameters File", ".stpm"),
+            new SupportedFileFilter("Brawl Stage Trap Data Table File", ".stdt"),
+            new SupportedFileFilter("Brawl Stage Collision Attributes File", ".scla"),
+            new SupportedFileFilter("Brawl TBCL File", ".tbcl"),
+            new SupportedFileFilter("Brawl TBGC File", ".tbgc"),
+            new SupportedFileFilter("Brawl TBGD File", ".tbgd"),
+            new SupportedFileFilter("Brawl TBGM File", ".tbgm"),
+            new SupportedFileFilter("Brawl TBLV File", ".tblv"),
+            new SupportedFileFilter("Brawl TBRM File", ".tbrm"),
+            new SupportedFileFilter("Brawl TBST File", ".tbst"),
+
+            // Subspace Emissary Files
+            new SupportedFileFilter("Adventure Stepjump", ".adsj"),
+            new SupportedFileFilter("BLOC Adventure Archive", ".bloc"),
+
+            // Mod-Specific Filetypes
+            new SupportedFileFilter("Masquerade Costume File", ".masq"),
+            new SupportedFileFilter("BrawlEx Configuration File", ".bx"),
+            new SupportedFileFilter("Custom My Music Tracklist", ".cmm"),
+            new SupportedFileFilter("Alternate Stage Loader Data", ".asl"),
+            new SupportedFileFilter("Stage Info Parameters", ".param"),
+            new SupportedFileFilter("Stage Tracklist", ".tlst"), 
+
+            // Generic File Types
+            new SupportedFileFilter(true, false, "Text File", ".txt"),
+            new SupportedFileFilter(true, false, "Data File", ".dat"),
+            new SupportedFileFilter(true, false, "Binary File", ".bin"),
+            new SupportedFileFilter(true, false, "Binary Backup File", ".bak"),
         };
 
         /// <summary>

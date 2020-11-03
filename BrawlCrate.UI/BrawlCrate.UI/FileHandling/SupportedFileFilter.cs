@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Eto.Forms;
 
 namespace BrawlCrate.UI.FileHandling
@@ -23,16 +24,11 @@ namespace BrawlCrate.UI.FileHandling
         /// </summary>
         /// <param name="name">The name of the filter.</param>
         /// <param name="extensions">The extension(s) to filter the file list. Each extension should begin with a period.</param>
-        public SupportedFileFilter(string name, params string[] extensions)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="extensions">Extensions</paramref> is empty.</exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="extensions">Extensions</paramref> do not all properly start with a period.</exception>
+        public SupportedFileFilter(string name, params string[] extensions) : this(true, true, name, extensions)
         {
-            if (extensions == null || extensions.Length == 0)
-            {
-                throw new ArgumentException("No extensions for file type \"" + name + "\".");
-            }
-            ForEditing = true;
-            CanAssociate = true;
-            Name = name;
-            Extensions = extensions;
+            // Call argumented constructor instead
         }
 
         /// <summary>
@@ -41,16 +37,11 @@ namespace BrawlCrate.UI.FileHandling
         /// <param name="forDirectEdit">Whether this file type is supported for direct opening.</param>
         /// <param name="name">The name of the filter.</param>
         /// <param name="extensions">The extension(s) to filter the file list. Each extension should begin with a period.</param>
-        public SupportedFileFilter(bool forDirectEdit, string name, params string[] extensions)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="extensions">Extensions</paramref> is empty.</exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="extensions">Extensions</paramref> do not all properly start with a period.</exception>
+        public SupportedFileFilter(bool forDirectEdit, string name, params string[] extensions) : this(forDirectEdit, forDirectEdit, name, extensions)
         {
-            if (extensions == null || extensions.Length == 0)
-            {
-                throw new ArgumentException("No extensions for file type \"" + name + "\".");
-            }
-            ForEditing = forDirectEdit;
-            CanAssociate = forDirectEdit;
-            Name = name;
-            Extensions = extensions;
+            // Call argumented constructor instead
         }
 
         /// <summary>
@@ -60,16 +51,13 @@ namespace BrawlCrate.UI.FileHandling
         /// <param name="associate">Whether this file type is meant to be associated with the program (only not set to the same as <see cref="ForEditing"/> for generic filetypes).</param>
         /// <param name="name">The name of the filter.</param>
         /// <param name="extensions">The extensions to filter the file list. Each extension should begin with a period.</param>
-        public SupportedFileFilter(bool forDirectEdit, bool associate, string name, params string[] extensions)
+        /// <exception cref="T:System.ArgumentNullException"><paramref name="extensions">Extensions</paramref> is empty.</exception>
+        /// <exception cref="T:System.ArgumentException"><paramref name="extensions">Extensions</paramref> do not all properly start with a period.</exception>
+        public SupportedFileFilter(bool forDirectEdit, bool associate, string name, params string[] extensions) : base(name, extensions)
         {
-            if (extensions == null || extensions.Length == 0)
-            {
-                throw new ArgumentException("No extensions for file type \"" + name + "\".");
-            }
+            // Set additional sorting options not set by the base constructor
             ForEditing = forDirectEdit;
             CanAssociate = associate;
-            Name = name;
-            Extensions = extensions;
         }
     }
 }
