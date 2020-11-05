@@ -39,7 +39,7 @@ namespace BrawlCrate.UI.FileHandling
         }
 
         /// <summary>
-        /// Constructor to be used when explicitly setting Sets both <see cref="CanAssociate"/> and <see cref="ForEditing"/> to different values.
+        /// Constructor to be used when explicitly setting both <see cref="CanAssociate"/> and <see cref="ForEditing"/> to different values.
         /// </summary>
         /// <param name="forDirectEdit">Whether this file type is supported for direct opening.</param>
         /// <param name="associate">Whether this file type is meant to be associated with the program (only not set to the same as <see cref="ForEditing"/> for generic filetypes).</param>
