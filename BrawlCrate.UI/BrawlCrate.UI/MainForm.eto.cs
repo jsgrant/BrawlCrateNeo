@@ -6,43 +6,29 @@ namespace BrawlCrate.UI
 {
     partial class MainForm : Form
     {
+        /// <summary>
+        /// Set up the <see cref="Form"/> with visual styling.
+        /// </summary>
         void InitializeComponent()
         {
             Icon = Iconography.MainIcon;
             Title = Versioning.ProgramTitle;
             ClientSize = new Size(680, 420);
-            Padding = 10;
+            Padding = 5;
 
-            Content = new StackLayout
+            Content = new Splitter
             {
-                Orientation = Orientation.Horizontal,
-                Size = new Size(680, 420),
-                
-                Items =
+                FixedPanel = SplitterFixedPanel.Panel1,
+                Panel1 = _nodeTree = new TreeGridView(),
+                Panel2 = new Splitter
                 {
-                    new TreeGridView
-                    {
-                        Size = new Size(680 / 2, 420)
-                    },
-                    new TabControl
-                    {
-                        Size = new Size(680 / 2, 420),
-                        Pages =
-                        {
-                            new TabPage
-                            {
-                                Text = "Properties",
-                                Content = _propertyGrid
-                            },
-                            new TabPage
-                            {
-                                Text = "Custom Controls",
-                                Content = new Panel()
-                            }
-                        }
-                    }
-                    // add more controls here
+                    Orientation = Orientation.Vertical,
+                    FixedPanel = SplitterFixedPanel.None,
+                    Panel1 = _propertyGrid = new PropertyGrid { Size = new Size(100,100) },
+                    Panel2 = _previewPanel = new Panel { Size = new Size(100, 100) },
+                    Position = 255
                 },
+                Position = 235
             };
 
             // create a few commands that can be used for the menu and toolbar

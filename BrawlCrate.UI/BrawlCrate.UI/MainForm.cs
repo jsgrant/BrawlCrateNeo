@@ -21,9 +21,19 @@ namespace BrawlCrate.UI
         public static readonly OpenFileDialog FileOpenDialog = SupportedFilesHandler.GetOpenFileDialog();
 
         /// <summary>
-        /// The default <see cref="OpenFileDialog"/> containing the default editable <see cref="SupportedFileFilter"/>s.
+        /// The default <see cref="TreeGridView"/> which displays a visual representation of current node hierarchies.
         /// </summary>
-        private readonly PropertyGrid _propertyGrid = new PropertyGrid();
+        private TreeGridView _nodeTree;
+
+        /// <summary>
+        /// The default <see cref="PropertyGrid"/> which displays all exposed properties of a selected node.
+        /// </summary>
+        private PropertyGrid _propertyGrid;
+
+        /// <summary>
+        /// Preview <see cref="Panel"/> used to display a visual preview of a given Node, where applicable.
+        /// </summary>
+        private Panel _previewPanel;
 
         /// <summary>
         /// Argumented constructor allowing passing in of arguments from the program.
@@ -57,6 +67,10 @@ namespace BrawlCrate.UI
             }
         }
 
+        /// <summary>
+        /// Opens a given file from a path string.
+        /// </summary>
+        /// <param name="fileName">The full path of the file that is to be opened.</param>
         public void OpenFile(string fileName)
         {
             Title = $"{Path.GetFileName(fileName)} - {Versioning.ProgramTitle}";
