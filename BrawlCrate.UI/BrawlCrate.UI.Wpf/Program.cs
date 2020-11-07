@@ -8,7 +8,7 @@ namespace BrawlCrate.UI.Wpf
         [STAThread]
         public static void Main(string[] args)
         {
-            new Application(Eto.Platforms.Wpf).Run(MainForm.Instance);
+            new Application(Eto.Platforms.Wpf).Run(new MainForm(args));
         }
     }
 }

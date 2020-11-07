@@ -13,7 +13,7 @@ namespace BrawlCrate.UI
         /// <summary>
         /// The sole instance of the <see cref="MainForm"/> in a given instance of the program.
         /// </summary>
-        public static readonly MainForm Instance = new MainForm();
+        public static MainForm Instance { get; private set; }
 
         /// <summary>
         /// The default <see cref="OpenFileDialog"/> containing the default editable <see cref="SupportedFileFilter"/>s.
@@ -26,12 +26,22 @@ namespace BrawlCrate.UI
         private readonly PropertyGrid _propertyGrid = new PropertyGrid();
 
         /// <summary>
-        /// Private constructor.
+        /// Argumented constructor allowing passing in of arguments from the program.
         /// </summary>
-        /// <remarks>Should only be called once by <see cref="Instance"/>.</remarks>
-        private MainForm()
+        /// <remarks>Should only be called once per run.</remarks>
+        /// <exception cref="T:System.Exception"><see cref="Instance"/> is not null.</exception>
+        public MainForm(string[] args)
         {
+            if (Instance != null)
+            {
+                throw new Exception("Only one instance of the Main Form can be active in a given program instance.");
+            }
+            Instance = this;
             InitializeComponent();
+            if (args.Length >= 1)
+            {
+                OpenFile(args[0]);
+            }
         }
 
         /// <summary>

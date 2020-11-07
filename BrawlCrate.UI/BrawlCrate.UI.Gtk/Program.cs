@@ -8,7 +8,7 @@ namespace BrawlCrate.UI.Gtk
         [STAThread]
         public static void Main(string[] args)
         {
-            new Application(Eto.Platforms.Gtk).Run(MainForm.Instance);
+            new Application(Eto.Platforms.Gtk).Run(new MainForm(args));
         }
     }
 }
