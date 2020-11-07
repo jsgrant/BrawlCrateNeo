@@ -8,7 +8,7 @@ namespace BrawlCrate.UI
     /// <summary>
     /// Main <see cref="Form"/> used as the base UI element for the program.
     /// </summary>
-    public partial class MainForm : Form
+    public partial class MainForm
     {
         /// <summary>
         /// The sole instance of the <see cref="MainForm"/> in a given instance of the program.
@@ -19,6 +19,11 @@ namespace BrawlCrate.UI
         /// The default <see cref="OpenFileDialog"/> containing the default editable <see cref="SupportedFileFilter"/>s.
         /// </summary>
         public static readonly OpenFileDialog FileOpenDialog = SupportedFilesHandler.GetOpenFileDialog();
+
+        /// <summary>
+        /// The default <see cref="OpenFileDialog"/> containing the default editable <see cref="SupportedFileFilter"/>s.
+        /// </summary>
+        private readonly PropertyGrid _propertyGrid = new PropertyGrid();
 
         /// <summary>
         /// Private constructor.
@@ -39,7 +44,6 @@ namespace BrawlCrate.UI
             if (FileOpenDialog.ShowDialog(this) == DialogResult.Ok)
             {
                 Title = $"{Path.GetFileName(FileOpenDialog.FileName)} - {Versioning.ProgramTitle}";
-                ((StackLayout)Content).Items[0] = FileOpenDialog.FileName;
             }
         }
     }

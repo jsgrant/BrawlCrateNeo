@@ -5,6 +5,10 @@
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     
     <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
+    
+    <AssemblyName>BrawlCrate</AssemblyName>
+    
+    <ApplicationIcon>../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">

@@ -3,7 +3,8 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-    <ApplicationIcon></ApplicationIcon>
+    <ApplicationIcon>../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
+    <AssemblyName>BrawlCrate</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">

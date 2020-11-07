@@ -1,3 +1,4 @@
+using BrawlCrate.Core.Nodes;
 using Eto.Forms;
 using Eto.Drawing;
 
@@ -14,11 +15,34 @@ namespace BrawlCrate.UI
 
             Content = new StackLayout
             {
+                Orientation = Orientation.Horizontal,
+                Size = new Size(680, 420),
+                
                 Items =
                 {
-                    "Welcome to BrawlCrate Neo! Actual features coming soon™"
+                    new TreeGridView
+                    {
+                        Size = new Size(680 / 2, 420)
+                    },
+                    new TabControl
+                    {
+                        Size = new Size(680 / 2, 420),
+                        Pages =
+                        {
+                            new TabPage
+                            {
+                                Text = "Properties",
+                                Content = _propertyGrid
+                            },
+                            new TabPage
+                            {
+                                Text = "Custom Controls",
+                                Content = new Panel()
+                            }
+                        }
+                    }
                     // add more controls here
-                }
+                },
             };
 
             // create a few commands that can be used for the menu and toolbar
@@ -38,8 +62,7 @@ namespace BrawlCrate.UI
                 {
                     // File submenu
                     new ButtonMenuItem { Text = "&File", Items = { openFile } },
-                    new ButtonMenuItem { Text = "&Edit", Items = { /* commands/items */ } },
-                    new ButtonMenuItem { Text = "&View", Items = { /* commands/items */ } }
+                    new ButtonMenuItem { Text = "&Edit", Items = { new Command { MenuText = "Coming Soon™" } } }
                 },
                 ApplicationItems =
                 {

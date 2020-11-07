@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <AssemblyName>BrawlCrate</AssemblyName>
+    <ApplicationIcon>../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
