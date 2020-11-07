@@ -2,7 +2,8 @@
 	
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <ApplicationIcon>Resources\BrawlCrate.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(Configuration)'=='Release'">../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(Configuration)'!='Release'">../BrawlCrate.UI/Resources/BrawlCrateCanary.ico</ApplicationIcon>
     <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 	

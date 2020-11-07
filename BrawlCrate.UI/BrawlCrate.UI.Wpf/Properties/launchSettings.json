@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "BrawlCrate.UI.Wpf": {
+      "commandName": "Project"
+    }
+  }
+}

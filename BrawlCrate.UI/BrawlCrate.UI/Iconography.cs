@@ -11,7 +11,7 @@ namespace BrawlCrate.UI
         /// Main Icon used by the program. Different in Canary and Release builds.
         /// </summary>
         public readonly static Icon MainIcon =
-#if CANARY
+#if CANARY || DEBUG
             Icon.FromResource("BrawlCrate.UI.Resources.BrawlCrateCanary.ico");
 #else
             Icon.FromResource("BrawlCrate.UI.Resources.BrawlCrate.ico");

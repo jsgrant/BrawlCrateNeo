@@ -43,8 +43,13 @@ namespace BrawlCrate.UI
         {
             if (FileOpenDialog.ShowDialog(this) == DialogResult.Ok)
             {
-                Title = $"{Path.GetFileName(FileOpenDialog.FileName)} - {Versioning.ProgramTitle}";
+                OpenFile(FileOpenDialog.FileName);
             }
+        }
+
+        public void OpenFile(string fileName)
+        {
+            Title = $"{Path.GetFileName(fileName)} - {Versioning.ProgramTitle}";
         }
     }
 }

@@ -4,7 +4,9 @@
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <AssemblyName>BrawlCrate</AssemblyName>
-    <ApplicationIcon>../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(Configuration)'=='Release'">../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(Configuration)'!='Release'">../BrawlCrate.UI/Resources/BrawlCrateCanary.ico</ApplicationIcon>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">

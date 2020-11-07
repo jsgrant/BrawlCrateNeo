@@ -3,8 +3,10 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-    <ApplicationIcon>../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(Configuration)'=='Release'">../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(Configuration)'!='Release'">../BrawlCrate.UI/Resources/BrawlCrateCanary.ico</ApplicationIcon>
     <AssemblyName>BrawlCrate</AssemblyName>
+    <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
