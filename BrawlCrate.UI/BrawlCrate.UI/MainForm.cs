@@ -35,6 +35,16 @@ namespace BrawlCrate.UI
         /// </summary>
         private Panel _previewPanel;
 
+        private static string _theme = "DefaultDark";
+        public static string CurrentTheme
+        {
+            get => _theme;
+            set
+            {
+                _theme = value;
+            }
+        }
+
         /// <summary>
         /// Argumented constructor allowing passing in of arguments from the program.
         /// </summary>
@@ -46,8 +56,10 @@ namespace BrawlCrate.UI
             {
                 throw new Exception("Only one instance of the Main Form can be active in a given program instance.");
             }
+            Themes.GenerateThemes();
             Instance = this;
             InitializeComponent();
+            RefreshTheme();
             if (args.Length >= 1)
             {
                 OpenFile(args[0]);
@@ -74,6 +86,12 @@ namespace BrawlCrate.UI
         public void OpenFile(string fileName)
         {
             Title = $"{Path.GetFileName(fileName)} - {Versioning.ProgramTitle}";
+        }
+
+        public void RefreshTheme()
+        {
+            Themes.UpdateThemeRecursive(this);
+            Invalidate();
         }
     }
 }
