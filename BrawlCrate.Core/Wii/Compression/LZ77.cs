@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace BrawlCrate.Core.Compression
+namespace BrawlCrate.Core.Wii.Compression
 {
     /// <summary>
     /// Implementation of the LZ77 compression algorithm used by Brawl.
