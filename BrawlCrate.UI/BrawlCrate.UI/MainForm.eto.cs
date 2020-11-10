@@ -1,4 +1,3 @@
-using BrawlCrate.Core.Nodes;
 using Eto.Forms;
 using Eto.Drawing;
 
