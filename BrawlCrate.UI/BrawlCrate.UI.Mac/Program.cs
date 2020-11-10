@@ -3,7 +3,7 @@ using Eto.Forms;
 
 namespace BrawlCrate.UI.Mac
 {
-    class MainClass
+    internal static class MainClass
     {
         [STAThread]
         public static void Main(string[] args)

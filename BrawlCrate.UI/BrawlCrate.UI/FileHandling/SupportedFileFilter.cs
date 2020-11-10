@@ -10,12 +10,12 @@ namespace BrawlCrate.UI.FileHandling
         /// <summary>
         /// Whether this file type is supported for direct opening.
         /// </summary>
-        public bool ForEditing;
+        public bool ForEditing { get; init; }
 
         /// <summary>
         /// Whether this file type is meant to be associated with the program (only not set to the same as <see cref="ForEditing"/> for generic filetypes such as dat).
         /// </summary>
-        public bool CanAssociate;
+        public bool CanAssociate { get; init; }
 
         /// <summary>
         /// Basic constructor. Sets both <see cref="CanAssociate"/> and <see cref="ForEditing"/> to true.

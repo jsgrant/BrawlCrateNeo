@@ -90,12 +90,12 @@ namespace BrawlCrate.UI.FileHandling
         /// <summary>
         /// Full list of <see cref="SupportedFileFilter"/>s with the <see cref="SupportedFileFilter.ForEditing"/> flag set to true.
         /// </summary>
-        public static readonly FileFilter[] EditableFiles = SupportedFiles.Where(o => o.ForEditing).ToArray<FileFilter>();
+        public static readonly IReadOnlyCollection<FileFilter> EditableFiles = SupportedFiles.Where(o => o.ForEditing).ToArray<FileFilter>();
 
         /// <summary>
         /// Full list of supported extensions with the <see cref="SupportedFileFilter.ForEditing"/> flag set to true.
         /// </summary>
-        public static readonly string[] EditableExtensions = GetSupportedExtensions(EditableFiles);
+        public static readonly IReadOnlyCollection<string> EditableExtensions = GetSupportedExtensions(EditableFiles.ToArray());
 
         /// <summary>
         /// Gets an <see cref="OpenFileDialog"/> with relevant <see cref="FileFilter"/>s.
@@ -136,7 +136,7 @@ namespace BrawlCrate.UI.FileHandling
                 if (open)
                 {
                     // First, add "all supported" filter if opening a file
-                    filters.Add(new FileFilter("All Supported Files", EditableExtensions));
+                    filters.Add(new FileFilter("All Supported Files", EditableExtensions.ToArray()));
                 }
                 // Add all supported editable files
                 filters.AddRange(EditableFiles);
@@ -169,7 +169,7 @@ namespace BrawlCrate.UI.FileHandling
                 // Add unknown extensions as default filters
                 foreach (var ext in unknownExtensions)
                 {
-                    filters.Add(new FileFilter($"{ext} File", ext));;
+                    filters.Add(new FileFilter($"{ext} File", ext));
                 }
             }
 

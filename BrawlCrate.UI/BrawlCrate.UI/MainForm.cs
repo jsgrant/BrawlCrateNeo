@@ -44,7 +44,7 @@ namespace BrawlCrate.UI
         {
             if (Instance != null)
             {
-                throw new Exception("Only one instance of the Main Form can be active in a given program instance.");
+                throw new InvalidOperationException("Only one instance of the Main Form can be active in a given program instance.");
             }
             Instance = this;
             InitializeComponent();
