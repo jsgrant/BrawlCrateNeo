@@ -64,7 +64,7 @@ namespace BrawlCrate.Core.Wii
         /// <summary>
         /// Implicit conversion from <see cref="uint"/>.
         /// </summary>
-        /// <param name="value">The <see cref="UInt24"/> to convert to the 32-bit equivalent.</param>
+        /// <param name="value">The <see cref="uint"/> to convert to the 24-bit equivalent.</param>
         public static implicit operator UInt24(uint value)
         {
             return new UInt24(value);
