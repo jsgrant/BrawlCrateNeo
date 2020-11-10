@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <ApplicationIcon Condition="'$(Configuration)'=='Release'">../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
-    <ApplicationIcon Condition="'$(Configuration)'!='Release'">../BrawlCrate.UI/Resources/BrawlCrateCanary.ico</ApplicationIcon>
+    <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon Condition="'$(Configuration)'=='Release'">..\BrawlCrate.UI\Resources\BrawlCrate.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(Configuration)'!='Release'">..\BrawlCrate.UI\Resources\BrawlCrateCanary.ico</ApplicationIcon>
     <Configurations>Debug;Release;Canary</Configurations>
     <Version>0.0.0</Version>
   </PropertyGroup>
-	
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Canary|netstandard2.0|AnyCPU'">
+
+  <PropertyGroup Condition="'$(Configuration)'=='Canary'">
     <DefineConstants>TRACE;CANARY</DefineConstants>
   </PropertyGroup>
-	
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 	
