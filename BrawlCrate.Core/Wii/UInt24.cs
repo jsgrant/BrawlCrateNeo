@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using BrawlCrate.Core.Wii.BigEndian;
 
 namespace BrawlCrate.Core.Wii
@@ -7,7 +8,7 @@ namespace BrawlCrate.Core.Wii
     /// Represents a 24-bit unsigned integer.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct UInt24
+    public struct UInt24 : IEquatable<UInt24>
     {
         private byte _b0; // 0x0
         private byte _b1; // 0x1
@@ -58,6 +59,21 @@ namespace BrawlCrate.Core.Wii
         public static implicit operator BUInt24(UInt24 value)
         {
             return new BUInt24(value._b2, value._b1, value._b0);
+        }
+
+        public bool Equals(UInt24 other)
+        {
+            return Value == other.Value;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is UInt24 other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_b0, _b1, _b2);
         }
     }
 }
