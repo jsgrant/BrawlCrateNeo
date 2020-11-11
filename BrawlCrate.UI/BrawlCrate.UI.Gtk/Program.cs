@@ -1,4 +1,5 @@
 ﻿using System;
+using Eto;
 using Eto.Forms;
 
 namespace BrawlCrate.UI.Gtk
@@ -8,7 +9,7 @@ namespace BrawlCrate.UI.Gtk
         [STAThread]
         public static void Main(string[] args)
         {
-            new Application(Eto.Platforms.Gtk).Run(new MainForm(args));
+            new Application(Platforms.Gtk).Run(new MainForm(args));
         }
     }
 }

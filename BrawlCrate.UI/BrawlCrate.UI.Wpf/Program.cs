@@ -1,4 +1,5 @@
 ﻿using System;
+using Eto;
 using Eto.Forms;
 
 namespace BrawlCrate.UI.Wpf
@@ -8,7 +9,7 @@ namespace BrawlCrate.UI.Wpf
         [STAThread]
         public static void Main(string[] args)
         {
-            new Application(Eto.Platforms.Wpf).Run(new MainForm(args));
+            new Application(Platforms.Wpf).Run(new MainForm(args));
         }
     }
 }

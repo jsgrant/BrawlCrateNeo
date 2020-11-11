@@ -49,6 +49,15 @@ namespace BrawlCrate.Core.Wii.BigEndian
             return new LUInt24(value._b2, value._b1, value._b0);
         }
 
+        /// <summary>
+        /// Implicit conversion to <see cref="uint"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="BUInt24"/> to convert.</param>
+        public static implicit operator uint(BUInt24 value)
+        {
+            return (LUInt24)value;
+        }
+
         public bool Equals(BUInt24 other)
         {
             return _b0 == other._b0 && _b1 == other._b1 && _b2 == other._b2;
