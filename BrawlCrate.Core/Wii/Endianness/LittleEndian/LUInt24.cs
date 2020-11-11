@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using BrawlCrate.Core.Extensions;
-using BrawlCrate.Core.Wii.BigEndian;
+using BrawlCrate.Core.Wii.Endianness.BigEndian;
 
-namespace BrawlCrate.Core.Wii.LittleEndian
+namespace BrawlCrate.Core.Wii.Endianness.LittleEndian
 {
     /// <summary>
     /// Represents an explicitly Little Endian 24-bit unsigned integer.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct LUInt24 : IEquatable<LUInt24>
+    public struct LUInt24 : IComparable<LUInt24>, IEquatable<LUInt24>
     {
         private readonly byte _b0; // 0x0
         private readonly byte _b1; // 0x1
@@ -84,6 +84,11 @@ namespace BrawlCrate.Core.Wii.LittleEndian
         public static implicit operator LUInt24(uint value)
         {
             return new LUInt24(value);
+        }
+
+        public int CompareTo(LUInt24 other)
+        {
+            return Value.CompareTo(other.Value);
         }
 
         public bool Equals(LUInt24 other)

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using BrawlCrate.Core.Extensions;
-using BrawlCrate.Core.Wii.LittleEndian;
+using BrawlCrate.Core.Wii.Endianness.LittleEndian;
 
-namespace BrawlCrate.Core.Wii.BigEndian
+namespace BrawlCrate.Core.Wii.Endianness.BigEndian
 {
     /// <summary>
     /// Represents an explicitly Big Endian 24-bit unsigned integer. See <see cref="LUInt24"/>.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct BUInt24 : IEquatable<BUInt24>
+    public struct BUInt24 : IComparable<BUInt24>, IEquatable<BUInt24>
     {
         private readonly byte _b0; // 0x0
         private readonly byte _b1; // 0x1
@@ -79,7 +79,12 @@ namespace BrawlCrate.Core.Wii.BigEndian
         /// <returns>The string representation of the value of this instance, consisting of a sequence of digits ranging from 0 to 9, without a sign or leading zeroes.</returns>
         public override string ToString()
         {
-            return ((LUInt24)this).ToString();
+            return ((uint)this).ToString();
+        }
+
+        public int CompareTo(BUInt24 other)
+        {
+            return ((uint)this).CompareTo(other);
         }
     }
 }
