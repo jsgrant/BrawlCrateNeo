@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using BrawlCrate.Core.Extensions;
+using BrawlCrate.Core.Wii.LittleEndian;
 
 namespace BrawlCrate.Core.Wii.BigEndian
 {
     /// <summary>
-    /// Represents a Big Endian 24-bit unsigned integer. See <see cref="UInt24"/>.
+    /// Represents an explicitly Big Endian 24-bit unsigned integer. See <see cref="LUInt24"/>.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct BUInt24 : IEquatable<BUInt24>
@@ -19,9 +21,10 @@ namespace BrawlCrate.Core.Wii.BigEndian
         /// <param name="value">An unsigned 32-bit integer to convert.</param>
         public BUInt24(uint value)
         {
-            _b0 = (byte)((value >> 16) & 0xFF);
-            _b1 = (byte)((value >> 8) & 0xFF);
-            _b2 = (byte)(value & 0xFF);
+            var littleEndianValue = value.LittleEndian();
+            _b0 = (byte)((littleEndianValue >> 16) & 0xFF);
+            _b1 = (byte)((littleEndianValue >> 8) & 0xFF);
+            _b2 = (byte)(littleEndianValue & 0xFF);
         }
 
         /// <summary>
@@ -38,12 +41,12 @@ namespace BrawlCrate.Core.Wii.BigEndian
         }
 
         /// <summary>
-        /// Implicit conversion to <see cref="UInt24"/>.
+        /// Implicit conversion to <see cref="LUInt24"/>.
         /// </summary>
         /// <param name="value">The <see cref="BUInt24"/> to convert to the Little Endian equivalent.</param>
-        public static implicit operator UInt24(BUInt24 value)
+        public static implicit operator LUInt24(BUInt24 value)
         {
-            return new UInt24(value._b2, value._b1, value._b0);
+            return new LUInt24(value._b2, value._b1, value._b0);
         }
 
         public bool Equals(BUInt24 other)
@@ -59,6 +62,15 @@ namespace BrawlCrate.Core.Wii.BigEndian
         public override int GetHashCode()
         {
             return HashCode.Combine(_b0, _b1, _b2);
+        }
+
+        /// <summary>
+        /// Converts the numeric value of this instance to its equivalent string representation.
+        /// </summary>
+        /// <returns>The string representation of the value of this instance, consisting of a sequence of digits ranging from 0 to 9, without a sign or leading zeroes.</returns>
+        public override string ToString()
+        {
+            return ((LUInt24)this).ToString();
         }
     }
 }
