@@ -1,4 +1,5 @@
-﻿using Eto;
+﻿using System.Runtime.CompilerServices;
+using Eto;
 using Eto.Drawing;
 using Eto.Forms;
 
@@ -9,6 +10,7 @@ namespace BrawlCrate.UI
         /// <summary>
         /// Generates a default set of themes for <see cref="Eto.Style"/>.
         /// </summary>
+        [ModuleInitializer]
         internal static void GenerateThemes()
         {
             // Default Dark Mode

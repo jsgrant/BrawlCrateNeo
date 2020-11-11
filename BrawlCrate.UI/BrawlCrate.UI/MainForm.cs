@@ -56,7 +56,6 @@ namespace BrawlCrate.UI
             {
                 throw new InvalidOperationException("Only one instance of the Main Form can be active in a given program instance.");
             }
-            Themes.GenerateThemes();
             Instance = this;
             InitializeComponent();
             RefreshTheme();

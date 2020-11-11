@@ -1,4 +1,5 @@
-﻿using Eto.Drawing;
+﻿using System.Runtime.CompilerServices;
+using Eto.Drawing;
 using Eto.Forms;
 using Eto.Wpf;
 using Eto.Wpf.Forms;
@@ -10,6 +11,7 @@ namespace BrawlCrate.UI.Wpf
         /// <summary>
         /// Generates a default set of themes for <see cref="Eto.Style"/>.
         /// </summary>
+        [ModuleInitializer]
         internal static void GenerateThemes()
         {
             // Default Dark Mode
