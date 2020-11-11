@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-    <ApplicationIcon Condition="'$(Configuration)'=='Release'">../BrawlCrate.UI/Resources/BrawlCrate.ico</ApplicationIcon>
-    <ApplicationIcon Condition="'$(Configuration)'!='Release'">../BrawlCrate.UI/Resources/BrawlCrateCanary.ico</ApplicationIcon>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <ApplicationIcon Condition="'$(Configuration)'=='Release'">..\BrawlCrate.UI\Resources\BrawlCrate.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(Configuration)'!='Release'">..\BrawlCrate.UI\Resources\BrawlCrateCanary.ico</ApplicationIcon>
     <AssemblyName>BrawlCrate</AssemblyName>
     <Configurations>Debug;Release;Canary</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   
