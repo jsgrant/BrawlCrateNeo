@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace BrawlCrate.Core.Wii.Types
+namespace BrawlCrate.Core.Wii.Types.Common
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct ByteOrderMark : IEquatable<ByteOrderMark>

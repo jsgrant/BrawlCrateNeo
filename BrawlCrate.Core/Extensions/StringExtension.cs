@@ -8,7 +8,6 @@ namespace BrawlCrate.Core.Extensions
     /// </summary>
     public static class StringExtension
     {
-
         /// <summary>
         /// Returns a value indicating whether a specified <see cref="T:System.String"/> occurs within this string. A parameter specifies the type of search to use for the specified string.
         /// </summary>

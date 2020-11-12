@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace BrawlCrate.Core.Wii.Types
+namespace BrawlCrate.Core.Wii.Types.Common
 {
     /// <summary>
     /// Represents a 24-bit unsigned integer.
