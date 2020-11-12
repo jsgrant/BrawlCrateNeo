@@ -1,4 +1,4 @@
-﻿using System;
+﻿using BrawlCrate.Core.Wii.Endian;
 
 namespace BrawlCrate.Core.Extensions
 {
@@ -18,23 +18,44 @@ namespace BrawlCrate.Core.Extensions
         }
 
         /// <summary>
-        /// Gets a forced Little Endian variation of the unsigned integer, regardless of current system Endian.
+        /// Converts an unsigned integer from the current system Endianness to a given Endianness.
         /// </summary>
         /// <param name="i">The specified uint.</param>
-        /// <returns>A Little Endian formatted variation of the given unsigned integer.</returns>
-        public static uint LittleEndian(this uint i)
+        /// <param name="convertTo">The Endianness to convert to.</param>
+        /// <returns>An Endian-converted unsigned integer.</returns>
+        public static uint ConvertFromSystemEndian(this uint i, Endianness convertTo)
         {
-            return BitConverter.IsLittleEndian ? i : i.Reverse();
+            return i.EndianConversion(SystemInfo.Endian, convertTo);
         }
 
         /// <summary>
-        /// Gets a forced Big Endian variation of a given unsigned integer, regardless of current system Endian.
+        /// Converts an unsigned integer from a given Endianness to the current system Endianness.
         /// </summary>
         /// <param name="i">The specified uint.</param>
-        /// <returns>A Big Endian formatted variation of the given unsigned integer.</returns>
-        public static uint BigEndian(this uint i)
+        /// <param name="convertFrom">The Endianness to convert from.</param>
+        /// <returns>An Endian-converted unsigned integer.</returns>
+        public static uint ConvertToSystemEndian(this uint i, Endianness convertFrom)
         {
-            return BitConverter.IsLittleEndian ? i.Reverse() : i;
+            return i.EndianConversion(convertFrom, SystemInfo.Endian);
+        }
+
+        /// <summary>
+        /// Converts an unsigned integer from a given Endianness to another given Endianness.
+        /// </summary>
+        /// <param name="i">The specified uint.</param>
+        /// <param name="convertFrom">The Endianness to convert from.</param>
+        /// <param name="convertTo">The Endianness to convert to.</param>
+        /// <returns>An Endian-converted unsigned integer.</returns>
+        /// <remarks>Should most often be called by <see cref="ConvertFromSystemEndian"/> and <see cref="ConvertToSystemEndian"/>. Not much reason to call otherwise.</remarks>
+        public static uint EndianConversion(this uint i, Endianness convertFrom, Endianness convertTo)
+        {
+            switch (convertFrom == convertTo)
+            {
+                case true: // If Endianness is the same, return the same value.
+                    return i;
+                case false: // If Endianness is different, return the reversed value.
+                    return i.Reverse();
+            }
         }
     }
 }

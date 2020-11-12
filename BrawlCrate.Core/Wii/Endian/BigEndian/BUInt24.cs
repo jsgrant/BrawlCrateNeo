@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using BrawlCrate.Core.Extensions;
-using BrawlCrate.Core.Wii.Endianness.LittleEndian;
+using BrawlCrate.Core.Wii.Endian.LittleEndian;
 
-namespace BrawlCrate.Core.Wii.Endianness.BigEndian
+namespace BrawlCrate.Core.Wii.Endian.BigEndian
 {
     /// <summary>
     /// Represents an explicitly Big Endian 24-bit unsigned integer. See <see cref="LUInt24"/>.
@@ -21,7 +21,7 @@ namespace BrawlCrate.Core.Wii.Endianness.BigEndian
         /// <param name="value">An unsigned 32-bit integer to convert.</param>
         public BUInt24(uint value)
         {
-            var littleEndianValue = value.LittleEndian();
+            var littleEndianValue = value.ConvertFromSystemEndian(Endianness.LittleEndian);
             _b0 = (byte)((littleEndianValue >> 16) & 0xFF);
             _b1 = (byte)((littleEndianValue >> 8) & 0xFF);
             _b2 = (byte)(littleEndianValue & 0xFF);
