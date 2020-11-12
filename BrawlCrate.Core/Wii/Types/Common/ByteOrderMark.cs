@@ -28,6 +28,12 @@ namespace BrawlCrate.Core.Wii.Types.Common
             }
         }
 
+        public ByteOrderMark(Endianness e)
+        {
+            _b1 = (byte)(e == Endianness.Big ? 0xFE : 0xFF);
+            _b2 = (byte)(e == Endianness.Big ? 0xFF : 0xFE);
+        }
+
         public bool Equals(ByteOrderMark other)
         {
             return _b1 == other._b1 && _b2 == other._b2;
