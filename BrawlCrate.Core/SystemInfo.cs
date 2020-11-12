@@ -3,7 +3,7 @@ using BrawlCrate.Core.Wii.Endian;
 
 namespace BrawlCrate.Core
 {
-    public class SystemInfo
+    public static class SystemInfo
     {
         public static readonly Endianness Endian =
             BitConverter.IsLittleEndian ? Endianness.Little : Endianness.Big;
