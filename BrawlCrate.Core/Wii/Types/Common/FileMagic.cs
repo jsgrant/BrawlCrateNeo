@@ -43,7 +43,6 @@ namespace BrawlCrate.Core.Wii.Types.Common
         /// <param name="m">The <see cref="FileMagic"/> to convert.</param>
         public static implicit operator string(FileMagic m)
         {
-            1.ToString()
             return m.ToString();
         }
 
