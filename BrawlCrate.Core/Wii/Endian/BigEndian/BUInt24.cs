@@ -21,7 +21,7 @@ namespace BrawlCrate.Core.Wii.Endian.BigEndian
         /// <param name="value">An unsigned 32-bit integer to convert.</param>
         public BUInt24(uint value)
         {
-            var littleEndianValue = value.ConvertFromSystemEndian(Endianness.LittleEndian);
+            var littleEndianValue = value.ConvertFromSystemEndian(Endianness.Little);
             _b0 = (byte)((littleEndianValue >> 16) & 0xFF);
             _b1 = (byte)((littleEndianValue >> 8) & 0xFF);
             _b2 = (byte)(littleEndianValue & 0xFF);
