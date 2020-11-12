@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net5.0-windows7.0</TargetFramework>
     <ApplicationIcon Condition="'$(Configuration)'=='Release'">..\BrawlCrate.UI\Resources\BrawlCrate.ico</ApplicationIcon>
     <ApplicationIcon Condition="'$(Configuration)'!='Release'">..\BrawlCrate.UI\Resources\BrawlCrateCanary.ico</ApplicationIcon>
     <AssemblyName>BrawlCrate</AssemblyName>

@@ -13,7 +13,7 @@ namespace BrawlCrate.UI
         /// <summary>
         /// The sole instance of the <see cref="MainForm"/> in a given instance of the program.
         /// </summary>
-        public static MainForm Instance { get; private set; }
+        public static MainForm? Instance { get; private set; }
 
         /// <summary>
         /// The default <see cref="OpenFileDialog"/> containing the default editable <see cref="SupportedFileFilter"/>s.
@@ -23,17 +23,17 @@ namespace BrawlCrate.UI
         /// <summary>
         /// The default <see cref="TreeGridView"/> which displays a visual representation of current node hierarchies.
         /// </summary>
-        private TreeGridView _nodeTree;
+        private TreeGridView? _nodeTree;
 
         /// <summary>
         /// The default <see cref="PropertyGrid"/> which displays all exposed properties of a selected node.
         /// </summary>
-        private PropertyGrid _propertyGrid;
+        private PropertyGrid? _propertyGrid;
 
         /// <summary>
         /// Preview <see cref="Panel"/> used to display a visual preview of a given Node, where applicable.
         /// </summary>
-        private Panel _previewPanel;
+        private Panel? _previewPanel;
 
         /// <summary>
         /// Argumented constructor allowing passing in of arguments from the program.
@@ -59,7 +59,7 @@ namespace BrawlCrate.UI
         /// </summary>
         /// <param name="sender">The sending object.</param>
         /// <param name="e">Event arguments.</param>
-        public void OpenFile(object sender, EventArgs e)
+        public void OpenFile(object? sender, EventArgs e)
         {
             if (FileOpenDialog.ShowDialog(this) == DialogResult.Ok)
             {
