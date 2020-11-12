@@ -1,5 +1,5 @@
 ﻿using System;
-using BrawlCrate.Core.Wii.Endian;
+using BrawlCrate.Core.Wii;
 
 namespace BrawlCrate.Core
 {

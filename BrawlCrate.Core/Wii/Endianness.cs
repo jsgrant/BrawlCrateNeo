@@ -1,7 +1,7 @@
-﻿namespace BrawlCrate.Core.Wii.Endian
+﻿namespace BrawlCrate.Core.Wii
 {
     /// <summary>
-    /// Specifies Endianness. Values are taken from BRRES Endian implementation
+    /// Specifies Endianness. Values are taken from BRRES BOM.
     /// </summary>
     public enum Endianness : ushort
     {
