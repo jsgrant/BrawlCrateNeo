@@ -49,13 +49,11 @@ namespace BrawlCrate.Core.Extensions
         /// <remarks>Should most often be called by <see cref="ConvertFromSystemEndian"/> and <see cref="ConvertToSystemEndian"/>. Not much reason to call otherwise.</remarks>
         public static uint EndianConversion(this uint i, Endianness convertFrom, Endianness convertTo)
         {
-            switch (convertFrom == convertTo)
+            return (convertFrom == convertTo) switch
             {
-                case true: // If Endianness is the same, return the same value.
-                    return i;
-                case false: // If Endianness is different, return the reversed value.
-                    return i.Reverse();
-            }
+                true => i, // If Endianness is the same, return the same value.
+                false => i.Reverse() // If Endianness is different, return the reversed value.
+            };
         }
     }
 }
