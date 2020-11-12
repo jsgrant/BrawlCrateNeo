@@ -1,10 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace BrawlCrate.Core.Wii.Types
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public readonly struct ByteOrderMark
+    public readonly struct ByteOrderMark : IEquatable<ByteOrderMark>
     {
         private readonly byte _b1;
         private readonly byte _b2;
@@ -25,6 +26,31 @@ namespace BrawlCrate.Core.Wii.Types
 
                 throw new InvalidDataException($"Invalid Byte Order Mark 0x{_b1:X2}{_b2:X2}. Valid values are 0xFEFF and 0xFFFE.");
             }
+        }
+
+        public bool Equals(ByteOrderMark other)
+        {
+            return _b1 == other._b1 && _b2 == other._b2;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is ByteOrderMark other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_b1, _b2);
+        }
+
+        public static bool operator ==(ByteOrderMark left, ByteOrderMark right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(ByteOrderMark left, ByteOrderMark right)
+        {
+            return !left.Equals(right);
         }
     }
 }

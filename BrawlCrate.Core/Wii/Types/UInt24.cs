@@ -13,6 +13,9 @@ namespace BrawlCrate.Core.Wii.Types
         private readonly byte _b1; // 0x1
         private readonly byte _b2; // 0x2
 
+        /// <summary>
+        /// The value as represented by a same-Endian UInt32.
+        /// </summary>
         private uint Value => _b0 | ((uint)_b1 << 8) | ((uint)_b2 << 16);
 
         /// <summary>
@@ -113,14 +116,14 @@ namespace BrawlCrate.Core.Wii.Types
             return Value.CompareTo(other.Value);
         }
 
-        public static bool operator ==(UInt24 a, UInt24 b)
+        public static bool operator ==(UInt24 left, UInt24 right)
         {
-            return a.Equals(b);
+            return left.Equals(right);
         }
 
-        public static bool operator !=(UInt24 a, UInt24 b)
+        public static bool operator !=(UInt24 left, UInt24 right)
         {
-            return !(a == b);
+            return !left.Equals(right);
         }
 
         public static bool operator <(UInt24 left, UInt24 right)
