@@ -97,6 +97,24 @@ namespace BrawlCrate.Core.Wii.Types.Common
         }
 
         /// <summary>
+        /// Implicit conversion from <see cref="ushort"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="ushort"/> to convert to the 24-bit equivalent.</param>
+        public static implicit operator UInt24(ushort value)
+        {
+            return new UInt24(value);
+        }
+
+        /// <summary>
+        /// Implicit conversion from <see cref="byte"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="byte"/> to convert to the 24-bit equivalent.</param>
+        public static implicit operator UInt24(byte value)
+        {
+            return new UInt24(value);
+        }
+
+        /// <summary>
         /// Converts the numeric value of this instance to its equivalent string representation.
         /// </summary>
         /// <returns>The string representation of the value of this instance, consisting of a sequence of digits ranging from 0 to 9, without a sign or leading zeroes.</returns>
@@ -120,7 +138,7 @@ namespace BrawlCrate.Core.Wii.Types.Common
             return Value == other.Value;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is UInt24 other && Equals(other);
         }

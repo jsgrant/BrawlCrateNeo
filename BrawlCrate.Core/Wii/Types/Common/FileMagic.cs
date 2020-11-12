@@ -56,9 +56,9 @@ namespace BrawlCrate.Core.Wii.Types.Common
         }
 
         /// <summary>
-        /// 
+        /// Returns the FileMagic as represented by a string.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The string representation of the FileMagic.</returns>
         public override string ToString()
         {
             return Tag;
@@ -69,7 +69,7 @@ namespace BrawlCrate.Core.Wii.Types.Common
             return _c0 == other._c0 && _c1 == other._c1 && _c2 == other._c2 && _c3 == other._c3;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is FileMagic other && Equals(other);
         }

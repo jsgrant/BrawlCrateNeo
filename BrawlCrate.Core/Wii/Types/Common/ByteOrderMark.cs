@@ -39,7 +39,7 @@ namespace BrawlCrate.Core.Wii.Types.Common
             return _b1 == other._b1 && _b2 == other._b2;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is ByteOrderMark other && Equals(other);
         }
