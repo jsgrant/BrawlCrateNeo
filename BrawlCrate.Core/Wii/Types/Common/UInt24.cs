@@ -96,6 +96,25 @@ namespace BrawlCrate.Core.Wii.Types.Common
             return new UInt24(value);
         }
 
+        /// <summary>
+        /// Converts the numeric value of this instance to its equivalent string representation.
+        /// </summary>
+        /// <returns>The string representation of the value of this instance, consisting of a sequence of digits ranging from 0 to 9, without a sign or leading zeroes.</returns>
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+
+        /// <summary>
+        /// Converts the numeric value of this instance to its equivalent string representation using the specified format.
+        /// </summary>
+        /// <param name="format">The specified format.</param>
+        /// <returns>The string representation of the value of this instance as specified by format.</returns>
+        public string ToString(string? format)
+        {
+            return Value.ToString(format);
+        }
+
         public bool Equals(UInt24 other)
         {
             return Value == other.Value;

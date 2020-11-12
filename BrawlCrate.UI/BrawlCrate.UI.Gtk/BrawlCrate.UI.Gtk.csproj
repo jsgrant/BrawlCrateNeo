@@ -7,6 +7,7 @@
     <ApplicationIcon Condition="'$(Configuration)'=='Release'">..\BrawlCrate.UI\Resources\BrawlCrate.ico</ApplicationIcon>
     <ApplicationIcon Condition="'$(Configuration)'!='Release'">..\BrawlCrate.UI\Resources\BrawlCrateCanary.ico</ApplicationIcon>
     <Configurations>Debug;Release;Canary</Configurations>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
