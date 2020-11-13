@@ -79,10 +79,14 @@ namespace BrawlCrate.Core.Wii.Types.Common
         }
 
         /// <summary>
-        /// Implicit conversion to <see cref="uint"/>.
+        /// Explicit conversion to <see cref="uint"/>.
         /// </summary>
         /// <param name="value">The <see cref="UInt24"/> to convert to the 32-bit equivalent.</param>
-        public static implicit operator uint(UInt24 value)
+        /// <remarks>
+        /// Explicit rather than implicit in order to ensure it's not used when not wanted, see
+        /// <see cref="Extensions.MemoryMappedViewAccessorExtension.Write(System.IO.MemoryMappedFiles.MemoryMappedViewAccessor, long, UInt24, Endianness)"/>
+        /// </remarks>
+        public static explicit operator uint(UInt24 value)
         {
             return value.Value;
         }
@@ -112,6 +116,15 @@ namespace BrawlCrate.Core.Wii.Types.Common
         public static implicit operator UInt24(byte value)
         {
             return new UInt24(value);
+        }
+
+        /// <summary>
+        /// Implicit conversion to <see cref="byte"/>[].
+        /// </summary>
+        /// <param name="value">The <see cref="UInt24"/> to convert to a byte array.</param>
+        public static implicit operator byte[](UInt24 value)
+        {
+            return new[] { value._b0, value._b1, value._b2 };
         }
 
         /// <summary>
