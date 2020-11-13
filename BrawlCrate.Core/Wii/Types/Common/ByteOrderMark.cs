@@ -4,12 +4,19 @@ using System.Runtime.InteropServices;
 
 namespace BrawlCrate.Core.Wii.Types.Common
 {
+    /// <summary>
+    /// Byte Order Mark (BOM) utilized by BRES and NW4R structures.
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct ByteOrderMark : IEquatable<ByteOrderMark>
     {
         private readonly byte _b1;
         private readonly byte _b2;
 
+        /// <summary>
+        /// The <see cref="Endianness"/> represented by this BOM.
+        /// </summary>
+        /// <exception cref="InvalidDataException">Bytes in this BOM do not properly represent a known Endianness.</exception>
         public Endianness Endian
         {
             get
@@ -28,6 +35,10 @@ namespace BrawlCrate.Core.Wii.Types.Common
             }
         }
 
+        /// <summary>
+        /// Constructor from a given Endianness.
+        /// </summary>
+        /// <param name="e">The Endianness to be represented by this BOM.</param>
         public ByteOrderMark(Endianness e)
         {
             _b1 = (byte)(e == Endianness.Big ? 0xFE : 0xFF);

@@ -3,6 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace BrawlCrate.Core.Wii.Types.Common
 {
+    /// <summary>
+    /// A four-character unique string representing a filetype.
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct FileMagic : IEquatable<FileMagic>
     {
