@@ -4,8 +4,41 @@ using BrawlCrate.Core.Wii.Types.Common;
 
 namespace BrawlCrate.Core.Extensions
 {
+    /// <summary>
+    /// Extensions to <see cref="MemoryMappedViewAccessor"/>.
+    /// </summary>
     public static class MemoryMappedViewAccessorExtension
     {
+        #region Base Types
+
+        #region Int16
+
+        /// <summary>
+        /// Reads a 16-bit integer of a specific Endianness from the accessor and converts it to the current system Endianness.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin reading.</param>
+        /// <param name="convertFrom">The Endianness to convert from.</param>
+        /// <returns>The value that was read as converted to the current system Endianness.</returns>
+        public static short ReadInt16(this MemoryMappedViewAccessor mem, long position, Endianness convertFrom)
+        {
+            return mem.ReadInt16(position).ConvertToSystemEndian(convertFrom);
+        }
+
+        /// <summary>
+        /// Writes a 16-bit integer converted to a specific Endianness to the accessor.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin writing.</param>
+        /// <param name="value">The value to write.</param>
+        /// <param name="convertTo">The Endianness to convert to.</param>
+        public static void Write(this MemoryMappedViewAccessor mem, long position, short value, Endianness convertTo)
+        {
+            mem.Write(position, value.ConvertFromSystemEndian(convertTo));
+        }
+
+        #endregion
+
         #region Int32
 
         /// <summary>
@@ -33,6 +66,122 @@ namespace BrawlCrate.Core.Extensions
         }
 
         #endregion
+
+        #region Int64
+
+        /// <summary>
+        /// Reads a 64-bit integer of a specific Endianness from the accessor and converts it to the current system Endianness.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin reading.</param>
+        /// <param name="convertFrom">The Endianness to convert from.</param>
+        /// <returns>The value that was read as converted to the current system Endianness.</returns>
+        public static long ReadInt64(this MemoryMappedViewAccessor mem, long position, Endianness convertFrom)
+        {
+            return mem.ReadInt64(position).ConvertToSystemEndian(convertFrom);
+        }
+
+        /// <summary>
+        /// Writes a 64-bit integer converted to a specific Endianness to the accessor.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin writing.</param>
+        /// <param name="value">The value to write.</param>
+        /// <param name="convertTo">The Endianness to convert to.</param>
+        public static void Write(this MemoryMappedViewAccessor mem, long position, long value, Endianness convertTo)
+        {
+            mem.Write(position, value.ConvertFromSystemEndian(convertTo));
+        }
+
+        #endregion
+
+        #region UInt16
+
+        /// <summary>
+        /// Reads an unsigned 16-bit integer of a specific Endianness from the accessor and converts it to the current system Endianness.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin reading.</param>
+        /// <param name="convertFrom">The Endianness to convert from.</param>
+        /// <returns>The value that was read as converted to the current system Endianness.</returns>
+        public static ushort ReadUInt16(this MemoryMappedViewAccessor mem, long position, Endianness convertFrom)
+        {
+            return mem.ReadUInt16(position).ConvertToSystemEndian(convertFrom);
+        }
+
+        /// <summary>
+        /// Writes an unsigned 16-bit integer converted to a specific Endianness to the accessor.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin writing.</param>
+        /// <param name="value">The value to write.</param>
+        /// <param name="convertTo">The Endianness to convert to.</param>
+        public static void Write(this MemoryMappedViewAccessor mem, long position, ushort value, Endianness convertTo)
+        {
+            mem.Write(position, value.ConvertFromSystemEndian(convertTo));
+        }
+
+        #endregion
+
+        #region UInt32
+
+        /// <summary>
+        /// Reads an unsigned 32-bit integer of a specific Endianness from the accessor and converts it to the current system Endianness.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin reading.</param>
+        /// <param name="convertFrom">The Endianness to convert from.</param>
+        /// <returns>The value that was read as converted to the current system Endianness.</returns>
+        public static uint ReadUInt32(this MemoryMappedViewAccessor mem, long position, Endianness convertFrom)
+        {
+            return mem.ReadUInt32(position).ConvertToSystemEndian(convertFrom);
+        }
+
+        /// <summary>
+        /// Writes an unsigned 32-bit integer converted to a specific Endianness to the accessor.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin writing.</param>
+        /// <param name="value">The value to write.</param>
+        /// <param name="convertTo">The Endianness to convert to.</param>
+        public static void Write(this MemoryMappedViewAccessor mem, long position, uint value, Endianness convertTo)
+        {
+            mem.Write(position, value.ConvertFromSystemEndian(convertTo));
+        }
+
+        #endregion
+
+        #region UInt64
+
+        /// <summary>
+        /// Reads an unsigned 64-bit integer of a specific Endianness from the accessor and converts it to the current system Endianness.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin reading.</param>
+        /// <param name="convertFrom">The Endianness to convert from.</param>
+        /// <returns>The value that was read as converted to the current system Endianness.</returns>
+        public static ulong ReadUInt64(this MemoryMappedViewAccessor mem, long position, Endianness convertFrom)
+        {
+            return mem.ReadUInt64(position).ConvertToSystemEndian(convertFrom);
+        }
+
+        /// <summary>
+        /// Writes an unsigned 64-bit integer converted to a specific Endianness to the accessor.
+        /// </summary>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The number of bytes into the accessor at which to begin writing.</param>
+        /// <param name="value">The value to write.</param>
+        /// <param name="convertTo">The Endianness to convert to.</param>
+        public static void Write(this MemoryMappedViewAccessor mem, long position, ulong value, Endianness convertTo)
+        {
+            mem.Write(position, value.ConvertFromSystemEndian(convertTo));
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Custom Types
 
         #region UInt24
 
@@ -86,32 +235,6 @@ namespace BrawlCrate.Core.Extensions
         }
 
         #endregion
-
-        #region UInt32
-
-        /// <summary>
-        /// Reads an unsigned 32-bit integer of a specific Endianness from the accessor and converts it to the current system Endianness.
-        /// </summary>
-        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
-        /// <param name="position">The number of bytes into the accessor at which to begin reading.</param>
-        /// <param name="convertFrom">The Endianness to convert from.</param>
-        /// <returns>The value that was read as converted to the current system Endianness.</returns>
-        public static uint ReadUInt32(this MemoryMappedViewAccessor mem, long position, Endianness convertFrom)
-        {
-            return mem.ReadUInt32(position).ConvertToSystemEndian(convertFrom);
-        }
-
-        /// <summary>
-        /// Writes an unsigned 32-bit integer converted to a specific Endianness to the accessor.
-        /// </summary>
-        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
-        /// <param name="position">The number of bytes into the accessor at which to begin writing.</param>
-        /// <param name="value">The value to write.</param>
-        /// <param name="convertTo">The Endianness to convert to.</param>
-        public static void Write(this MemoryMappedViewAccessor mem, long position, uint value, Endianness convertTo)
-        {
-            mem.Write(position, value.ConvertFromSystemEndian(convertTo));
-        }
 
         #endregion
     }
