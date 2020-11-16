@@ -14,6 +14,15 @@ namespace BrawlCrate.Core.Wii.Types.Common
         private readonly byte _b2; // 0x2
 
         /// <summary>
+        /// Represents the largest possible value of <see cref="UInt24"/>. This field is constant.
+        /// </summary>
+        public const uint MaxValue = 0xffffff;
+        /// <summary>
+        /// Represents the smallest possible value of <see cref="UInt24"/>. This field is constant.
+        /// </summary>
+        public const uint MinValue = 0U;
+
+        /// <summary>
         /// The value as represented by a same-Endian UInt32.
         /// </summary>
         private uint Value => _b0 | ((uint)_b1 << 8) | ((uint)_b2 << 16);

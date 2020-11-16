@@ -1,4 +1,5 @@
-﻿using System.IO.MemoryMappedFiles;
+﻿using System;
+using System.IO.MemoryMappedFiles;
 using BrawlCrate.Core.Wii;
 using BrawlCrate.Core.Wii.Types.Common;
 
@@ -9,6 +10,33 @@ namespace BrawlCrate.Core.Extensions
     /// </summary>
     public static class MemoryMappedViewAccessorExtension
     {
+        /// <summary>
+        /// Attempts to read a structure of type T from the accessor into a provided reference.
+        /// </summary>
+        /// <typeparam name="T">The type of structure.</typeparam>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The position in the accessor at which to begin reading.</param>
+        /// <param name="structure">The structure to contain the read data.</param>
+        /// <returns>True if the structure is successfully read, false if an error is thrown.</returns>
+        public static bool TryRead<T>(this MemoryMappedViewAccessor mem, long position, out T structure) where T : struct
+        {
+            try
+            {
+                mem.Read(position, out structure);
+                return true;
+            }
+            catch
+            {
+                structure = default;
+                if (structure is IDisposable d)
+                {
+                    // Dispose of the to-be-unused structure for memory purposes
+                    d.Dispose();
+                }
+                return false;
+            }
+        }
+
         #region Base Types
 
         #region Int16
