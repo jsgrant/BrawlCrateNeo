@@ -37,6 +37,19 @@ namespace BrawlCrate.Core.Extensions
             }
         }
 
+        /// <summary>
+        /// Reads a structure of type T from the accessor and returns it.
+        /// </summary>
+        /// <typeparam name="T">The type of structure.</typeparam>
+        /// <param name="mem">The specified MemoryMappedViewAccessor.</param>
+        /// <param name="position">The position in the accessor at which to begin reading.</param>
+        /// <returns>The structure containing the read data.</returns>
+        public static T Read<T>(this MemoryMappedViewAccessor mem, long position) where T : struct
+        {
+            mem.Read(position, out T temp);
+            return temp;
+        }
+
         #region Base Types
 
         #region Int16

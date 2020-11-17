@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using BrawlCrate.Core.Internal;
+using BrawlCrate.Core.Nodes;
 using BrawlCrate.UI.FileHandling;
 using Eto.Forms;
 
@@ -34,6 +36,8 @@ namespace BrawlCrate.UI
         /// Preview <see cref="Panel"/> used to display a visual preview of a given Node, where applicable.
         /// </summary>
         private Panel? _previewPanel;
+
+        public ResourceNode? RootNode { get; private set; }
 
         /// <summary>
         /// Argumented constructor allowing passing in of arguments from the program.
@@ -73,7 +77,64 @@ namespace BrawlCrate.UI
         /// <param name="fileName">The full path of the file that is to be opened.</param>
         public void OpenFile(string fileName)
         {
-            Title = $"{Path.GetFileName(fileName)} - {Versioning.ProgramTitle}";
+            OpenFile(fileName, false);
+        }
+
+        /// <summary>
+        /// Opens a given file from a path string, with the option to skip error messages such as "File Not Found".
+        /// </summary>
+        /// <param name="fileName">The full path of the file that is to be opened.</param>
+        /// <param name="hideErrors">If true, does not show error messages such as "File Not Found". Useful for API calls.</param>
+        public void OpenFile(string fileName, bool hideErrors)
+        {
+            // Don't open a file if the user refuses to close the file
+            if (!CloseFile())
+            {
+                return;
+            }
+            var path = fileName;
+            if (!File.Exists(path))
+            {
+                // Show an error message if not hiding them.
+                if (!hideErrors)
+                {
+                    MessageBox.Show("File Not Found", MessageBoxButtons.OK, MessageBoxType.Error);
+                }
+                return;
+            }
+
+            // Change the MainForm title
+            Title = $"{Path.GetFileName(path)} - {Versioning.ProgramTitle}";
+
+            // Get a temporary file location
+            var tempFile = Path.GetTempFileName();
+            try
+            {
+                // Attempt to copy to a temporary file to prevent write locks
+                File.Copy(path, tempFile);
+                path = tempFile;
+            }
+            catch
+            {
+                // Clear the temp file if an error is thrown. Just use the regular file
+                if (File.Exists(tempFile))
+                {
+                    File.Delete(tempFile);
+                }
+            }
+
+            RootNode = new ResourceNode(new DataSource(path));
+        }
+
+        public bool CloseFile()
+        {
+            return CloseFile(false);
+        }
+
+        public bool CloseFile(bool force)
+        {
+            RootNode?.Dispose();
+            return true;
         }
     }
 }

@@ -9,10 +9,10 @@ namespace BrawlCrate.Core.Wii.Types.Common
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public readonly struct FileMagic : IEquatable<FileMagic>
     {
-        private readonly char _c0; // 0x0
-        private readonly char _c1; // 0x1
-        private readonly char _c2; // 0x2
-        private readonly char _c3; // 0x3
+        private readonly byte _c0; // 0x0
+        private readonly byte _c1; // 0x1
+        private readonly byte _c2; // 0x2
+        private readonly byte _c3; // 0x3
 
         /// <summary>
         /// Constructor from a string.
@@ -29,16 +29,16 @@ namespace BrawlCrate.Core.Wii.Types.Common
         /// <param name="tag">The char array representing the <see cref="FileMagic"/>.</param>
         public FileMagic(char[] tag)
         {
-            _c0 = tag.Length > 0 ? tag[0] : '\0';
-            _c1 = tag.Length > 1 ? tag[1] : '\0';
-            _c2 = tag.Length > 2 ? tag[2] : '\0';
-            _c3 = tag.Length > 3 ? tag[3] : '\0';
+            _c0 = (byte)(tag.Length > 0 ? tag[0] : '\0');
+            _c1 = (byte)(tag.Length > 1 ? tag[1] : '\0');
+            _c2 = (byte)(tag.Length > 2 ? tag[2] : '\0');
+            _c3 = (byte)(tag.Length > 3 ? tag[3] : '\0');
         }
 
         /// <summary>
         /// The 4-byte tag as represented by a string.
         /// </summary>
-        public string Tag => new string(new []{_c0, _c1, _c2, _c3});
+        public string Tag => new string(new []{(char)_c0, (char)_c1, (char)_c2, (char)_c3});
 
         /// <summary>
         /// Implicit conversion to <see cref="string"/>.
@@ -64,7 +64,7 @@ namespace BrawlCrate.Core.Wii.Types.Common
         /// <returns>The string representation of the FileMagic.</returns>
         public override string ToString()
         {
-            return Tag;
+            return Tag.Trim();
         }
 
         public bool Equals(FileMagic other)
