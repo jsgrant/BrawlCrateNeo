@@ -6,7 +6,7 @@ using BrawlCrate.Core.Wii.Types.Common;
 namespace BrawlCrate.Core.Wii.Compression
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct CompressionHeader
+    public struct CompressionHeader : IEquatable<CompressionHeader>
     {
         /// <summary>
         /// Compression Algorithm used, see <see cref="CompressionType"/>.
@@ -59,5 +59,30 @@ namespace BrawlCrate.Core.Wii.Compression
         /// The size of this header.
         /// </summary>
         public uint HeaderSize => (uint)(_size == 0 ? 8 : 4);
+
+        public bool Equals(CompressionHeader other)
+        {
+            return _type == other._type && Size.Equals(other.Size);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is CompressionHeader other && Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_type, Size);
+        }
+
+        public static bool operator ==(CompressionHeader left, CompressionHeader right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(CompressionHeader left, CompressionHeader right)
+        {
+            return !left.Equals(right);
+        }
     }
 }

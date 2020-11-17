@@ -16,7 +16,6 @@ namespace BrawlCrate.Core.Wii.Compression
         public static void Expand(CompressionHeader header, MemoryMappedViewAccessor original, MemoryMappedViewAccessor uncompressed)
         {
             var extended = header.Compression == CompressionType.ExtendedLZ77;
-            var originalLen = original.Capacity;
             var uncompLen = uncompressed.Capacity;
             long origPos = header.HeaderSize;
             long uncompPos = 0;
