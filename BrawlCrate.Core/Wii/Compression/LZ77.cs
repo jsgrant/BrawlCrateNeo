@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.IO.Compression;
-using System.IO.MemoryMappedFiles;
-using Microsoft.VisualBasic;
+﻿using System.IO.MemoryMappedFiles;
 
 namespace BrawlCrate.Core.Wii.Compression
 {
