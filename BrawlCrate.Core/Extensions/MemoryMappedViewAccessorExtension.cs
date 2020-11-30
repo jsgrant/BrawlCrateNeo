@@ -244,7 +244,7 @@ namespace BrawlCrate.Core.Extensions
         /// <param name="position">The number of bytes into the accessor at which to begin reading.</param>
         /// <param name="convertFrom">The Endianness to convert from.</param>
         /// <returns>The value that was read as converted to the current system Endianness.</returns>
-        public static UInt24 ReadUInt24(this MemoryMappedViewAccessor mem, long position, Endianness convertFrom)
+        public static uint ReadUInt24(this MemoryMappedViewAccessor mem, long position, Endianness convertFrom)
         {
             return mem.ReadUInt24(position).ConvertToSystemEndian(convertFrom);
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 
 namespace BrawlCrate.Core.Wii.Types.Common
@@ -23,19 +23,12 @@ namespace BrawlCrate.Core.Wii.Types.Common
         public const uint MinValue = 0U;
 
         /// <summary>
-        /// The value as represented by a same-Endian UInt32.
+        /// Reverses the Endianness of an unsigned 24-bit integer.
         /// </summary>
-        private uint Value => _b0 | ((uint)_b1 << 8) | ((uint)_b2 << 16);
-
-        /// <summary>
-        /// Constructor from an unsigned 32-bit integer.
-        /// </summary>
-        /// <param name="value">An unsigned 32-bit integer to convert.</param>
-        public UInt24(uint value)
+        /// <returns>An Endian-swapped unsigned 24-bit integer.</returns>
+        public UInt24 Reverse()
         {
-            _b0 = (byte)((value >> 16) & 0xFF);
-            _b1 = (byte)((value >> 8) & 0xFF);
-            _b2 = (byte)(value & 0xFF);
+            return new UInt24(_b2, _b1, _b0);
         }
 
         /// <summary>
@@ -55,8 +48,8 @@ namespace BrawlCrate.Core.Wii.Types.Common
         /// Converts from the current system Endianness to a given Endianness.
         /// </summary>
         /// <param name="convertTo">The Endianness to convert to.</param>
-        /// <returns>An Endian-converted 24-bit unsigned integer.</returns>
-        public UInt24 ConvertFromSystemEndian(Endianness convertTo)
+        /// <returns>An Endian-converted unsigned integer.</returns>
+        public uint ConvertFromSystemEndian(Endianness convertTo)
         {
             return EndianConversion(SystemInfo.Endian, convertTo);
         }
@@ -65,8 +58,8 @@ namespace BrawlCrate.Core.Wii.Types.Common
         /// Converts from a given Endianness to the current system Endianness.
         /// </summary>
         /// <param name="convertFrom">The Endianness to convert from.</param>
-        /// <returns>An Endian-converted 24-bit unsigned integer.</returns>
-        public UInt24 ConvertToSystemEndian(Endianness convertFrom)
+        /// <returns>An Endian-converted unsigned integer.</returns>
+        public uint ConvertToSystemEndian(Endianness convertFrom)
         {
             return EndianConversion(convertFrom, SystemInfo.Endian);
         }
@@ -76,55 +69,23 @@ namespace BrawlCrate.Core.Wii.Types.Common
         /// </summary>
         /// <param name="convertFrom">The Endianness to convert from.</param>
         /// <param name="convertTo">The Endianness to convert to.</param>
-        /// <returns>An Endian-converted 24-bit integer.</returns>
+        /// <returns>An Endian-converted unsigned integer.</returns>
         /// <remarks>Should most often be called by <see cref="ConvertFromSystemEndian"/> and <see cref="ConvertToSystemEndian"/>. Not much reason to call otherwise.</remarks>
-        public UInt24 EndianConversion(Endianness convertFrom, Endianness convertTo)
+        public uint EndianConversion(Endianness convertFrom, Endianness convertTo)
         {
-            return (convertFrom == convertTo) switch
+            // Converting to Little Endian
+            if (convertTo == Endianness.Little)
             {
-                true => this, // If Endianness is the same, return the same value.
-                false => new UInt24(_b2, _b1, _b0) // If Endianness is different, return the reversed value.
-            };
-        }
+                return (convertFrom) switch
+                {
+                    Endianness.Little => _b0 | ((uint)_b1 << 8) | ((uint)_b2 << 16),
+                    Endianness.Big => _b2 | ((uint)_b1 << 8) | ((uint)_b0 << 16),
+                    _ => throw new ArgumentOutOfRangeException(nameof(convertFrom), convertFrom, null)
+                };
+            }
 
-        /// <summary>
-        /// Explicit conversion to <see cref="uint"/>.
-        /// </summary>
-        /// <param name="value">The <see cref="UInt24"/> to convert to the 32-bit equivalent.</param>
-        /// <remarks>
-        /// Explicit rather than implicit in order to ensure it's not used when not wanted, see
-        /// <see cref="Extensions.MemoryMappedViewAccessorExtension.Write(System.IO.MemoryMappedFiles.MemoryMappedViewAccessor, long, UInt24, Endianness)"/>
-        /// </remarks>
-        public static explicit operator uint(UInt24 value)
-        {
-            return value.Value;
-        }
-
-        /// <summary>
-        /// Implicit conversion from <see cref="uint"/>.
-        /// </summary>
-        /// <param name="value">The <see cref="uint"/> to convert to the 24-bit equivalent.</param>
-        public static implicit operator UInt24(uint value)
-        {
-            return new UInt24(value);
-        }
-
-        /// <summary>
-        /// Implicit conversion from <see cref="ushort"/>.
-        /// </summary>
-        /// <param name="value">The <see cref="ushort"/> to convert to the 24-bit equivalent.</param>
-        public static implicit operator UInt24(ushort value)
-        {
-            return new UInt24(value);
-        }
-
-        /// <summary>
-        /// Implicit conversion from <see cref="byte"/>.
-        /// </summary>
-        /// <param name="value">The <see cref="byte"/> to convert to the 24-bit equivalent.</param>
-        public static implicit operator UInt24(byte value)
-        {
-            return new UInt24(value);
+            // TODO: Implement converting to Big Endian
+            throw new ArgumentOutOfRangeException(nameof(convertTo), convertTo, null);
         }
 
         /// <summary>
@@ -139,25 +100,15 @@ namespace BrawlCrate.Core.Wii.Types.Common
         /// <summary>
         /// Converts the numeric value of this instance to its equivalent string representation.
         /// </summary>
-        /// <returns>The string representation of the value of this instance, consisting of a sequence of digits ranging from 0 to 9, without a sign or leading zeroes.</returns>
+        /// <returns>The string representation of the value of this instance in hexadecimal format.</returns>
         public override string ToString()
         {
-            return Value.ToString();
-        }
-
-        /// <summary>
-        /// Converts the numeric value of this instance to its equivalent string representation using the specified format.
-        /// </summary>
-        /// <param name="format">The specified format.</param>
-        /// <returns>The string representation of the value of this instance as specified by format.</returns>
-        public string ToString(string? format)
-        {
-            return Value.ToString(format);
+            return $"0x{_b0:X2}{_b1:X2}{_b2:X2}";
         }
 
         public bool Equals(UInt24 other)
         {
-            return Value == other.Value;
+            return _b0 == other._b0 && _b1 == other._b1 && _b2 == other._b2;
         }
 
         public override bool Equals(object? obj)
@@ -170,11 +121,6 @@ namespace BrawlCrate.Core.Wii.Types.Common
             return HashCode.Combine(_b0, _b1, _b2);
         }
 
-        public int CompareTo(UInt24 other)
-        {
-            return Value.CompareTo(other.Value);
-        }
-
         public static bool operator ==(UInt24 left, UInt24 right)
         {
             return left.Equals(right);
@@ -183,6 +129,17 @@ namespace BrawlCrate.Core.Wii.Types.Common
         public static bool operator !=(UInt24 left, UInt24 right)
         {
             return !left.Equals(right);
+        }
+
+        public int CompareTo(UInt24 other)
+        {
+            var b0Comparison = _b0.CompareTo(other._b0);
+            if (b0Comparison != 0)
+            {
+                return b0Comparison;
+            }
+            var b1Comparison = _b1.CompareTo(other._b1);
+            return b1Comparison != 0 ? b1Comparison : _b2.CompareTo(other._b2);
         }
 
         public static bool operator <(UInt24 left, UInt24 right)

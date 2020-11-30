@@ -51,14 +51,14 @@ namespace BrawlCrate.Core.Wii.Compression
         /// <summary>
         /// The uncompressed size of the node.
         /// </summary>
-        public uint Size => _size == 0
+        public uint Size => _size == new UInt24(0, 0, 0)
             ? _extraSize.ConvertToSystemEndian(Endianness.Little)
-            : (uint) _size.ConvertToSystemEndian(Endianness.Little);
+            : _size.ConvertToSystemEndian(Endianness.Little);
 
         /// <summary>
         /// The size of this header.
         /// </summary>
-        public uint HeaderSize => (uint)(_size == 0 ? 8 : 4);
+        public uint HeaderSize => (uint)(_size == new UInt24(0, 0, 0) ? 8 : 4);
 
         public bool Equals(CompressionHeader other)
         {

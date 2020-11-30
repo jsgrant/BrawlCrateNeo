@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.IO.MemoryMappedFiles;
@@ -21,6 +21,19 @@ namespace BrawlCrate.Core.Internal
         public string? Path { get; init; }
 
         public MemoryMappedViewAccessor Source => UncompressedSource ?? OriginalSource;
+
+        public string Tag
+        {
+            get
+            {
+                if (Source.Capacity < 4)
+                {
+                    return "";
+                }
+
+                return Source.Read<FileMagic>(0);
+            }
+        }
 
         public DataSource(MemoryMappedViewAccessor original)
         {
