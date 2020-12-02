@@ -31,7 +31,7 @@ namespace BrawlCrate.UI
             };
 
             // create a few commands that can be used for the menu and toolbar
-            var openFile = new Command { MenuText = "&Open", ToolBarText = "Open a file", Shortcut = Application.Instance.CommonModifier | Keys.O };
+            var openFile = new Command { MenuText = "&Open...", ToolBarText = "Open a file", Shortcut = Application.Instance.CommonModifier | Keys.O };
             openFile.Executed += OpenFile;
 
             var quitCommand = new Command { MenuText = "Quit", ToolBarText = "Quit the program" };
